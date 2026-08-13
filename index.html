@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DDTeam — Прайс-лист Standoff 2</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;color:#fff;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(circle at 15% 5%,rgba(124,35,255,.42),transparent 30%),
+    radial-gradient(circle at 90% 20%,rgba(0,170,255,.18),transparent 28%),
+    linear-gradient(145deg,#080811,#160722 50%,#070810);
+}
+.container{max-width:920px;margin:auto;padding:14px 12px 45px}
+.hero,.section{
+  background:rgba(15,12,28,.88);
+  border:1px solid rgba(255,255,255,.09);
+  box-shadow:0 15px 50px rgba(0,0,0,.3);
+}
+.hero{padding:24px 16px;border-radius:24px;text-align:center}
+.logo{font-size:14px;font-weight:900;letter-spacing:3px;opacity:.65}
+h1{font-size:clamp(28px,7vw,52px);line-height:1.05;margin:10px 0}
+.subtitle{opacity:.8;margin:0}
+.discount{
+  margin:20px auto 0;padding:17px 10px;border-radius:18px;
+  background:linear-gradient(135deg,#ff1744,#ff7200);
+  border:2px solid rgba(255,255,255,.3);
+}
+.discount b{display:block;font-size:clamp(29px,8vw,50px);line-height:1}
+.discount span{display:block;font-size:14px;font-weight:800;margin-top:8px}
+.section{margin-top:15px;padding:17px 13px;border-radius:21px}
+.section h2{
+  margin:18px 0 15px;font-size:19px;font-weight:900;letter-spacing:.4px;
+  display:inline-block;padding:8px 16px;border-radius:11px;
+}
+.section h2:first-child{margin-top:0}
+.rubles h2{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25)}
+.stars h2{background:rgba(255,216,77,.16);color:#ffd84d;border:1px solid rgba(255,216,77,.4)}
+.gold h2{background:rgba(255,209,102,.16);color:#ffd166;border:1px solid rgba(255,209,102,.4)}
+.section h2.main-title{
+  display:table;margin:0 auto 15px;text-align:center;font-size:20px;
+}
+.rubles h2.main-title{background:linear-gradient(135deg,rgba(139,44,255,.4),rgba(91,20,184,.35));color:#c9a2ff;border:1px solid rgba(160,80,255,.55)}
+.stars h2.main-title{background:linear-gradient(135deg,rgba(255,138,3,.35),rgba(255,23,68,.22));color:#ff9f1c;border:1px solid rgba(255,138,3,.55)}
+.gold h2.main-title{background:linear-gradient(135deg,rgba(0,201,167,.3),rgba(0,150,199,.25));color:#5eead4;border:1px solid rgba(0,201,167,.55)}
+.section h2.main-title .sub-badge-text{
+  display:block;font-size:11px;font-weight:700;opacity:.85;
+  margin-top:5px;letter-spacing:.2px;
+}
+.stars h2.green-badge{background:rgba(74,222,128,.16);color:#4ade80;border:1px solid rgba(74,222,128,.4)}
+.table{display:grid;gap:7px}
+.table.merged{gap:1px;background:rgba(255,255,255,.14);border-radius:13px;overflow:hidden}
+.table.merged .row,.table.merged .row-link{border-radius:0}
+.row{
+  display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;
+  padding:11px 12px;border-radius:13px;background:rgba(255,255,255,.055)
+}
+.row.row-link{
+  grid-template-columns:1fr auto auto;
+  text-decoration:none;color:inherit;cursor:pointer;
+}
+.row.row-link:active{transform:scale(.98)}
+.row-arrow{
+  display:flex;align-items:center;justify-content:center;
+  width:28px;height:28px;border-radius:9px;flex-shrink:0;
+  background:rgba(255,255,255,.09);
+}
+.row-arrow svg{width:14px;height:14px}
+.stars .row-arrow{background:rgba(255,216,77,.14)}
+.gold .row-arrow{background:rgba(255,209,102,.14)}
+.name{font-weight:650;font-size:14px}
+.price{font-weight:950;white-space:nowrap;font-size:16px}
+.from{display:block;font-size:11px;opacity:.5;margin-top:2px}
+.stars .price{color:#ffd84d}
+.gold .price{color:#ffd166}
+.rubles .price{color:#fff}
+.payment{display:grid;gap:8px}
+.payment div{padding:13px;border-radius:13px;background:rgba(255,255,255,.055)}
+.payment b{display:block;margin-bottom:4px}
+.pay-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.pay-row .pay-text{flex:1}
+.pay-btn{
+  flex-shrink:0;
+  padding:9px 16px;
+  border-radius:10px;
+  background:linear-gradient(135deg,#8b2cff,#5b14b8);
+  color:#fff !important;
+  text-decoration:none !important;
+  font-weight:700;
+  font-size:13px;
+  white-space:nowrap;
+  box-shadow:0 4px 14px rgba(100,30,180,.28);
+}
+.pay-btn:active{transform:scale(.97);}
+.small{font-size:12px;opacity:.62}
+.footer{text-align:center;opacity:.55;font-size:12px;margin-top:18px}
+@media(max-width:560px){
+ .container{padding:9px 8px 35px}
+ .hero{padding:19px 12px;border-radius:19px}
+ .section{padding:14px 9px;border-radius:17px}
+ .row{padding:10px 9px}
+ .name{font-size:13px}.price{font-size:14px}
+ .row-arrow{width:24px;height:24px}
+ .row-arrow svg{width:12px;height:12px}
+ .pay-row{flex-direction:column;align-items:stretch;text-align:center}
+ .pay-btn{width:100%;text-align:center;padding:10px 16px}
+}
+
+.order-btn{
+  display:block;
+  width:100%;
+  box-sizing:border-box;
+  margin:8px 0 0;
+  padding:16px 20px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#8b2cff,#5b14b8);
+  color:#fff !important;
+  text-align:center;
+  text-decoration:none !important;
+  font-weight:800;
+  font-size:18px;
+  letter-spacing:.3px;
+  box-shadow:0 8px 24px rgba(100,30,180,.28);
+}
+.order-btn:active{transform:scale(.98);}
+
+</style>
+</head>
+<body>
+<main class="container">
+
+<section class="hero">
+  <div class="logo">DDTEAM • STANDOFF 2</div>
+  <h1>🎮 ПРАЙС-ЛИСТ НА БУСТ</h1>
+  <p class="subtitle">Только ручная работа (Solo) • 💯 100% без читов и банов 🏆</p>
+  <div class="discount">
+    <b>СКИДКА 20%</b>
+    <span>ЗА ПОДПИСКУ НА НАШ TELEGRAM-КАНАЛ</span>
+  </div>
+</section>
+
+<section class="section rubles">
+<h2 class="main-title">🇷🇺 ЦЕНЫ В РУБЛЯХ (₽)</h2>
+
+<h2>🏆 ПОДНЯТИЕ РЕЙТИНГА</h2>
+<div class="table merged">
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73167086" target="_blank" rel="noopener"><div class="name">Поднятие рейтинга — за 100 MMR</div><div class="price">60 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73167086" target="_blank" rel="noopener"><div class="name">Elite → Legend — 100 MMR</div><div class="price">120 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+</div>
+
+<h2>🏆 КАЛИБРОВКА</h2>
+<div class="table">
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73124528" target="_blank" rel="noopener"><div class="name">Калибровка / прокачка в Союзниках/Соревновательный — до Legend</div><div class="price">200 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+<a class="row row-link" href="https://funpay.com/lots/offer?id=74392741" target="_blank" rel="noopener"><div class="name">Прохождение калибровки на хорошее звание в <u>Союзниках/Соревновательном</u></div><div class="price">150 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+</div>
+
+<h2>⚔️ БУСТ В ДУЭЛЯХ • ЗА 1 РАНГ</h2>
+<div class="table">
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73004846" target="_blank" rel="noopener"><div class="name">Bronze → Silver (I–IV)</div><div class="price">50 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73004870" target="_blank" rel="noopener"><div class="name">Silver → Gold (I–IV)</div><div class="price">70 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73004892" target="_blank" rel="noopener"><div class="name">Gold → Phoenix</div><div class="price">90 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73004913" target="_blank" rel="noopener"><div class="name">Phoenix → Ranger</div><div class="price">110 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73004946" target="_blank" rel="noopener"><div class="name">Ranger → Champion</div><div class="price">130 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73005062" target="_blank" rel="noopener"><div class="name">Champion → Master</div><div class="price">150 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73004960" target="_blank" rel="noopener"><div class="name">Master → Elite</div><div class="price">170 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+</div>
+</section>
+
+<section class="section rubles">
+<h2>👥 БУСТ В ММ И СОЮЗНИКАХ • ЗА 1 РАНГ</h2>
+<div class="table">
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73004052" target="_blank" rel="noopener"><div class="name">Bronze → Silver (I–IV)</div><div class="price">30 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73004194" target="_blank" rel="noopener"><div class="name">Silver → Gold (I–IV)</div><div class="price">35 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73004276" target="_blank" rel="noopener"><div class="name">Gold → Phoenix</div><div class="price">40 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73004368" target="_blank" rel="noopener"><div class="name">Phoenix → Ranger</div><div class="price">45 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73004813" target="_blank" rel="noopener"><div class="name">Ranger → Champion</div><div class="price">50 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73004990" target="_blank" rel="noopener"><div class="name">Champion → Master</div><div class="price">55 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73004560" target="_blank" rel="noopener"><div class="name">Master → Elite</div><div class="price">65 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73124528" target="_blank" rel="noopener"><div class="name">Elite → Legend</div><div class="price">200 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+</div>
+</section>
+
+<section class="section rubles">
+<h2>⚡ ПРОКАЧКА И СТАТИСТИКА</h2>
+<div class="table">
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73003663" target="_blank" rel="noopener"><div class="name">Открытие рейтинга — до 20 LVL за ≈1 час</div><div class="price">50 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+<a class="row row-link" href="https://funpay.com/lots/offer?id=73003684" target="_blank" rel="noopener"><div class="name">Фарм StatTrack — за 50 киллов</div><div class="price">6 ₽</div><div class="row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 16 12 8 20"/></svg></div></a>
+</div>
+</section>
+
+<section class="section stars">
+<h2 class="main-title">⭐ ЦЕНЫ В ЗВЁЗДАХ (Telegram Stars)</h2>
+
+<h2 class="green-badge">🏆 ПОДНЯТИЕ РЕЙТИНГА</h2>
+<div class="table merged">
+<div class="row"><div class="name">Поднятие рейтинга — за 100 MMR</div><div class="price">90 ⭐</div></div>
+<div class="row"><div class="name">Elite → Legend — 100 MMR</div><div class="price">180 ⭐</div></div>
+</div>
+
+<h2 class="green-badge">🏆 КАЛИБРОВКА</h2>
+<div class="table">
+<div class="row"><div class="name">Калибровка / прокачка в Союзниках/Соревновательный — до Legend</div><div class="price">300 ⭐</div></div>
+<div class="row"><div class="name">Прохождение калибровки на хорошее звание в <u>Союзниках/Соревновательном</u></div><div class="price">225 ⭐</div></div>
+</div>
+
+<h2 class="green-badge">⚔️ БУСТ В ДУЭЛЯХ • ЗА 1 РАНГ</h2>
+<div class="table">
+<div class="row"><div class="name">Bronze → Silver (I–IV)</div><div class="price">80 ⭐</div></div>
+<div class="row"><div class="name">Silver → Gold (I–IV)</div><div class="price">110 ⭐</div></div>
+<div class="row"><div class="name">Gold → Phoenix</div><div class="price">140 ⭐</div></div>
+<div class="row"><div class="name">Phoenix → Ranger</div><div class="price">170 ⭐</div></div>
+<div class="row"><div class="name">Ranger → Champion</div><div class="price">200 ⭐</div></div>
+<div class="row"><div class="name">Champion → Master</div><div class="price">230 ⭐</div></div>
+<div class="row"><div class="name">Master → Elite</div><div class="price">260 ⭐</div></div>
+</div>
+
+<h2 class="green-badge">👥 БУСТ В ММ И СОЮЗНИКАХ • ЗА 1 РАНГ</h2>
+<div class="table">
+<div class="row"><div class="name">Bronze → Silver (I–IV)</div><div class="price">50 ⭐</div></div>
+<div class="row"><div class="name">Silver → Gold (I–IV)</div><div class="price">50 ⭐</div></div>
+<div class="row"><div class="name">Gold → Phoenix</div><div class="price">60 ⭐</div></div>
+<div class="row"><div class="name">Phoenix → Ranger</div><div class="price">70 ⭐</div></div>
+<div class="row"><div class="name">Ranger → Champion</div><div class="price">80 ⭐</div></div>
+<div class="row"><div class="name">Champion → Master</div><div class="price">80 ⭐</div></div>
+<div class="row"><div class="name">Master → Elite</div><div class="price">100 ⭐</div></div>
+<div class="row"><div class="name">Elite → Legend</div><div class="price">300 ⭐</div></div>
+</div>
+
+<h2 class="green-badge">⚡ ПРОКАЧКА И СТАТИСТИКА</h2>
+<div class="table">
+<div class="row"><div class="name">Открытие рейтинга — до 20 LVL за ≈1 час</div><div class="price">50 ⭐</div></div>
+<div class="row"><div class="name">Фарм StatTrack — за 50 киллов</div><div class="price">5 ⭐</div></div>
+</div>
+</section>
+
+<section class="section gold">
+<h2 class="main-title">🪙 ЦЕНЫ В ГОЛДЕ (Gold)<span class="sub-badge-text">ВНУТРИИГРОВАЯ КОМИССИЯ — ВАША ❗</span></h2>
+
+<h2>🏆 ПОДНЯТИЕ РЕЙТИНГА</h2>
+<div class="table merged">
+<div class="row"><div class="name">Поднятие рейтинга — за 100 MMR</div><div class="price">40 G 🪙</div></div>
+<div class="row"><div class="name">Elite → Legend — 100 MMR</div><div class="price">80 G 🪙</div></div>
+</div>
+
+<h2>🏆 КАЛИБРОВКА</h2>
+<div class="table">
+<div class="row"><div class="name">Калибровка / прокачка в Союзниках/Соревновательный — до Legend</div><div class="price">310 G 🪙</div></div>
+<div class="row"><div class="name">Прохождение калибровки на хорошее звание в <u>Союзниках/Соревновательном</u></div><div class="price">100 G 🪙</div></div>
+</div>
+
+<h2>⚔️ БУСТ В ДУЭЛЯХ • ЗА 1 РАНГ</h2>
+<div class="table">
+<div class="row"><div class="name">Bronze → Silver (I–IV)</div><div class="price">40 G 🪙</div></div>
+<div class="row"><div class="name">Silver → Gold (I–IV)</div><div class="price">50 G 🪙</div></div>
+<div class="row"><div class="name">Gold → Phoenix</div><div class="price">60 G 🪙</div></div>
+<div class="row"><div class="name">Phoenix → Ranger</div><div class="price">80 G 🪙</div></div>
+<div class="row"><div class="name">Ranger → Champion</div><div class="price">90 G 🪙</div></div>
+<div class="row"><div class="name">Champion → Master</div><div class="price">110 G 🪙</div></div>
+<div class="row"><div class="name">Master → Elite</div><div class="price">120 G 🪙</div></div>
+</div>
+
+<h2>👥 БУСТ В ММ И СОЮЗНИКАХ • ЗА 1 РАНГ</h2>
+<div class="table">
+<div class="row"><div class="name">Bronze → Silver (I–IV)</div><div class="price">20 G 🪙</div></div>
+<div class="row"><div class="name">Silver → Gold (I–IV)</div><div class="price">20 G 🪙</div></div>
+<div class="row"><div class="name">Gold → Phoenix</div><div class="price">30 G 🪙</div></div>
+<div class="row"><div class="name">Phoenix → Ranger</div><div class="price">30 G 🪙</div></div>
+<div class="row"><div class="name">Ranger → Champion</div><div class="price">40 G 🪙</div></div>
+<div class="row"><div class="name">Champion → Master</div><div class="price">40 G 🪙</div></div>
+<div class="row"><div class="name">Master → Elite</div><div class="price">50 G 🪙</div></div>
+<div class="row"><div class="name">Elite → Legend</div><div class="price">310 G 🪙</div></div>
+</div>
+
+<h2>⚡ ПРОКАЧКА И СТАТИСТИКА</h2>
+<div class="table">
+<div class="row"><div class="name">Открытие рейтинга — до 20 LVL за ≈1 час</div><div class="price">70 G 🪙</div></div>
+<div class="row"><div class="name">Фарм StatTrack — за 50 киллов</div><div class="price">10 G 🪙</div></div>
+</div>
+</section>
+
+<section class="section">
+<h2>💳 ОПЛАТА</h2>
+<div class="payment">
+<div class="pay-row">
+  <div class="pay-text"><b>⭐ Telegram Stars</b>Оформление через менеджера.</div>
+  <a class="pay-btn" href="https://t.me/ddtzovbot?start=f_7278258" target="_blank" rel="noopener">Перейти</a>
+</div>
+<div class="pay-row">
+  <div class="pay-text"><b>🪙 Standoff 2 Gold</b>Оформление через менеджера. Внутриигровая комиссия — ваша.</div>
+  <a class="pay-btn" href="https://t.me/ddtzovbot?start=f_7278260" target="_blank" rel="noopener">Перейти</a>
+</div>
+<div class="pay-row">
+  <div class="pay-text"><b>💵 Другая валюта</b>Оплата через FunPay.</div>
+  <a class="pay-btn" href="https://funpay.com/users/14789918/" target="_blank" rel="noopener">Перейти</a>
+</div>
+<a class="order-btn" href="https://t.me/ddtzovbot?start=order" target="_blank" rel="noopener">
+  🛒 СВЯЗАТЬСЯ С МЕНЕДЖЕРОМ
+</a>
+</div>
+</section>
+
+<div class="footer">DDTeam • цены указаны по прайс-листу канала</div>
+</main>
+
+
+
+</body>
+</html>
